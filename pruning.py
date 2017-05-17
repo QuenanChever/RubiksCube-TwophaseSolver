@@ -164,7 +164,7 @@ def create_phase1_prun_table():
         fh = open(fname, "wb")
         flipslice_twist_depth3.tofile(fh)
     else:
-        print("loading " + fname + " table...")
+        # print("loading " + fname + " table...")
         fh = open(fname, "rb")
         flipslice_twist_depth3 = ar.array('L')
         flipslice_twist_depth3.fromfile(fh, total // 16 + 1)
@@ -266,7 +266,7 @@ def create_phase2_prun_table():
         fh = open(fname, "wb")
         corners_ud_edges_depth3.tofile(fh)
     else:
-        print("loading " + fname + " table...")
+        # print("loading " + fname + " table...")
         fh = open(fname, "rb")
         corners_ud_edges_depth3 = ar.array('L')
         corners_ud_edges_depth3.fromfile(fh, total // 16)
@@ -308,7 +308,7 @@ def create_phase2_cornsliceprun_table():
         fh = open(fname, "wb")
         cornslice_depth.tofile(fh)
     else:
-        print("loading " + fname + " table...")
+        # print("loading " + fname + " table...")
         fh = open(fname, "rb")
         cornslice_depth = ar.array('b')
         cornslice_depth.fromfile(fh, defs.N_CORNERS * defs.N_PERM_4)

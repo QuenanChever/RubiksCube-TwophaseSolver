@@ -116,7 +116,7 @@ if not path.isfile(fname):
     fh = open(fname, "wb")
     twist_conj.tofile(fh)
 else:
-    print("loading " + fname + " table...")
+    # print("loading " + fname + " table...")
     fh = open(fname, 'rb')
     twist_conj = ar.array('H')
     twist_conj.fromfile(fh, N_TWIST * N_SYM_D4h)
@@ -145,7 +145,7 @@ if not path.isfile(fname):
     fh = open(fname, "wb")
     ud_edges_conj.tofile(fh)
 else:
-    print("loading " + fname + " table...")
+    # print("loading " + fname + " table...")
     fh = open(fname, "rb")
     ud_edges_conj = ar.array('H')
     ud_edges_conj.fromfile(fh, N_UD_EDGES * N_SYM_D4h)
@@ -202,7 +202,7 @@ if not (path.isfile(fname1) and path.isfile(fname2) and path.isfile(fname3)):
     fh.close()
 
 else:
-    print("loading " + "flipslice sym-tables...")
+    # print("loading " + "flipslice sym-tables...")
 
     fh = open(fname1, 'rb')
     flipslice_classidx = ar.array('H')
