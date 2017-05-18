@@ -10,6 +10,7 @@ import pruning as pr
 import symmetries as sy
 from defs import N_U_EDGES_PHASE2, N_PERM_4, N_CHOOSE_8_4, N_FLIP, N_TWIST, N_UD_EDGES, N_MOVE
 from enums import Edge as Ed
+from misc import get_pruning_table_path
 
 SOLVED = 0  # 0 is index of solved state (except for u_edges coordinate)
 u_edges_plus_d_edges_to_ud_edges = None  # global variable
@@ -143,7 +144,8 @@ class CoordCube:
 
 def create_phase2_edgemerge_table():
     """phase2_edgemerge retrieves the initial phase 2 ud_edges coordinate from the u_edges and d_edges coordinates."""
-    fname = "phase2_edgemerge"
+    table_name = "phase2_edgemerge"
+    table_path = get_pruning_table_path(table_name)
     global u_edges_plus_d_edges_to_ud_edges
     c_u = cb.CubieCube()
     c_d = cb.CubieCube()
@@ -152,9 +154,9 @@ def create_phase2_edgemerge_table():
     edge_d = [Ed.DR, Ed.DF, Ed.DL, Ed.DB]
     edge_ud = [Ed.UR, Ed.UF, Ed.UL, Ed.UB, Ed.DR, Ed.DF, Ed.DL, Ed.DB]
 
-    if not path.isfile(fname):
+    if not path.isfile(table_path):
         cnt = 0
-        print("creating " + fname + " table...")
+        print("creating " + table_name + " table...")
         u_edges_plus_d_edges_to_ud_edges = ar.array('H', [0 for i in range(N_U_EDGES_PHASE2 * N_PERM_4)])
         for i in range(N_U_EDGES_PHASE2):
             c_u.set_u_edges(i)
@@ -183,12 +185,12 @@ def create_phase2_edgemerge_table():
                         if cnt % 2000 == 0:
                             print('.', end='', flush=True)
         print()
-        fh = open(fname, "wb")
+        fh = open(table_path, "wb")
         u_edges_plus_d_edges_to_ud_edges.tofile(fh)
         fh.close()
         print()
     else:
-        fh = open(fname, "rb")
+        fh = open(table_path, "rb")
         u_edges_plus_d_edges_to_ud_edges = ar.array('H')
         u_edges_plus_d_edges_to_ud_edges.fromfile(fh, N_U_EDGES_PHASE2 * N_PERM_4)
 ########################################################################################################################
