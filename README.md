@@ -10,7 +10,11 @@ This repository is forked from the Rubiks 3x3x3 solver created by Herbert Kociem
 Unlike the original repository, this version is meant to be used from the command line.
 
 ## Setup
-First, you need to make the main script executable:
+Make sure that you use Python 3. You must also have the numpy package installed:
+```
+sudo apt-get install python3-numpy
+```
+Then, you need to make the main script executable:
 ```
 sudo chmod +x kociemba-3x3x3
 ```
@@ -34,5 +38,3 @@ For example:
 $ kociemba-3x3x3 DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD
 D2 R3 D3 F2 B1 D1 R2 D2 R3 F2 D3 F2 U3 B2 L2 U2 D1 R2 U1
 ```
-
-Make sure that you use Python 3.
